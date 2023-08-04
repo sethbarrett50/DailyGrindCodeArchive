@@ -8,11 +8,11 @@ The repository is organized by programming language, and within each language, i
 
 Example:
 
-- Python
+- Python_Series
   - 2023-04-21-title-of-the-blog
-- JavaScript
+- JavaScript_Series
   - 2023-07-02-title-of-the-blog
-- Java
+- Java_Series
   - 2023-08-01-title-of-the-blog
 
 ## How to Use
