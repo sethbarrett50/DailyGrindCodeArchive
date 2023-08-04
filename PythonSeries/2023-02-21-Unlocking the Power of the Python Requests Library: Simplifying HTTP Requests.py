@@ -1,58 +1,27 @@
-# OpenCV, or Open Source Computer Vision, is a powerful and widely-used library for image and video processing in Python.
-# For an example of image translation, the following code applies a gaussian blur to an image:
-import cv2
+# One of the most popular Python libraries that Python developers use is the requests library.
+# The requests library is incredibly simple to use, and you can get started with it in just a few lines of code. For example, here's how you can make a simple GET request to a website:
+import requests
 
-# Load an image
-img = cv2.imread("image.jpg")
+response = requests.get("https://www.example.com")
+print(response.status_code)     # 200
 
-# Apply a gaussian blur
-img = cv2.GaussianBlur(img, (5, 5), 0)
+# You can also make other types of requests, such as POST, PUT, and DELETE. 
+# Here's an example of how you can make a POST request:
+import requests
 
-# Show the image
-cv2.imshow("Blurred Image", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+data = {"name": "John Smith", "email": "john.smith@example.com"}
+response = requests.post("https://www.example.com/submit", data=data)
+print(response.status_code)     # 200
 
-# Another common task in image processing is image transformation. 
-# OpenCV provides a wide range of image transformation functions, including rotation, scaling, and translation. 
-# For example, the following code rotates an image by 45 degrees:
-import cv2
-import numpy as np
+# One of the most powerful features of the requests library is its ability to handle various types of responses. 
+# You can get the response body in various formats like json, text or binary. 
+# You can also handle cookies and headers. 
+# Here's an example of how you can get the response body as json:
+import requests
 
-# Load an image
-img = cv2.imread("image.jpg")
+response = requests.get("https://jsonplaceholder.typicode.com/todos/1")
 
-# Get the image size
-rows, cols, _ = img.shape
+if response.status_code == 200:
+    json_data = response.json()
+    print(json_data)
 
-# Define the rotation matrix
-M = cv2.getRotationMatrix2D((cols/2, rows/2), 45, 1)
-
-# Rotate the image
-img = cv2.warpAffine(img, M, (cols, rows))
-
-# Show the image
-cv2.imshow("Rotated Image", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-# OpenCV also provides a wide range of feature detection functions, ssuch as Harris corner detection, SIFT, and SURF. 
-# These functions are useful for image registration, object recognition, and more. 
-# For example, the following code detects Harris corners in an image:
-import cv2
-
-# Load an image
-img = cv2.imread("image.jpg")
-
-# Convert the image to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-# Detect Harris corners
-gray = np.float32(gray)
-dst = cv2.cornerHarris(gray, 2, 3, 0.04)
-
-# Show the image
-img[dst>0.01*dst.max()]=[0,0,255]
-cv2.imshow('Harris Corners', img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
